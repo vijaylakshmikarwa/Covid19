@@ -1,0 +1,60 @@
+<div style="height: 1vh;"> 
+  <mat-toolbar color="primary">
+      <div fxShow="true" fxHide.gt-sm="true">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <a mat-button class="companyName" routerLink="/">
+        <span>Towards Need</span>
+      </a>
+      <span></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <a mat-button routerLink="/about-us">About Us</a>
+        <a mat-button routerLink="/prices">Contact Us</a>
+        <a mat-button routerLink="/start-page">Invite</a>
+        <a mat-button>Post</a>
+        <a mat-button   class="signout" (click)="SignOut()">SignOut</a>
+      </div>
+    </mat-toolbar>
+    <mat-sidenav-container fxFlexFill class="example-container">
+      <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+        <div fxLayout="column">
+          <a mat-button routerLink="/about-us">About Us</a>
+          <a mat-button routerLink="/prices">Contact Us</a>
+          <a mat-button routerLink="/start-page">Invite</a>
+        </div>
+      </mat-sidenav>
+    </mat-sidenav-container>
+  </div>
+  
+    
+    <div class="col-md-8" class="details">
+      <div *ngFor="let i of postDetails">
+      <div>
+        <B>Description</B>:{{i.DetailedDescription}}
+      </div>
+      <br>
+      <div>
+        <B>Type</B>:{{i.listing}}
+      </div>
+      <br>
+      <div>
+         <B>Location</B>:{{i.location}}
+      </div>
+      <br>
+      <br>
+      <hr>
+        <B>Comments Section</B>:
+      <div *ngFor ="let j of i.comments" >
+            {{j}}
+      </div>
+      <br>
+      <textarea [(ngModel)]="comment" rows="7" cols="60"></textarea>
+      <br>
+      <button  mat-raised-button type="submit" color="primary" class="Update-btn" (click)="post(i.id)">Comment</button>
+      <hr>
+      <div>
+      
+    </div>
+  

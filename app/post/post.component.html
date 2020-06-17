@@ -1,0 +1,75 @@
+<div>
+    <div class="add-title">
+      <h2 class="primary">Add New Listing</h2>
+    </div>
+    <div class="height">
+      <form [formGroup]="serviceform" (ngSubmit)="onSubmit()">
+        <mat-grid-list cols="2" rowHeight="85px">
+            <mat-grid-tile>
+                <div class="text-inside">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Listing All Categories</mat-label>
+                  <mat-select [(value)]="selectedValue" formControlName="Category">
+                    <mat-option>None</mat-option>
+                    <mat-option value="community">Community</mat-option>
+                    <mat-option value="ppeworkers">PPE Workers</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                </div>
+              </mat-grid-tile>
+      
+              <mat-grid-tile>
+                  <div class="text-inside">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Listing All Types</mat-label>
+                    <mat-select [(value)]="selected" formControlName="Listing">
+                      <mat-option>None</mat-option>
+                      <mat-option value="Masks">Masks</mat-option>
+                      <mat-option value="Gowns">Gowns</mat-option>
+                      <mat-option value="Gloves">Gloves</mat-option>
+                      <mat-option value="Goggles">Goggles</mat-option>
+                      <mat-option value="Face Shields">Face Shields</mat-option>
+                      <mat-option value="Aprons">Aprons</mat-option>
+                      <mat-option value="Respirators">Respirators</mat-option>
+                      <mat-option value="Disinfectant Wipes">Disinfectant Wipes</mat-option>
+                      <mat-option value="Non-PPE Goods">Non-PPE Goods</mat-option>
+                      <mat-option value="Services">Services</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  </div>
+              </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput placeholder="DetailedDescription" formControlName="DetailedDescription" required>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Email" formControlName="Email" required>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field class="example-full-width">
+                <input matInput  placeholder="Location" ngx-google-places-autocomplete   formControlName="Location" #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+              </mat-form-field>
+             <!-- {{formattedAdrress}}-->
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+  
+        <div class="btn-sec">
+          <button mat-raised-button type="submit" color="primary" class="Update-btn">Save</button>
+          <button mat-raised-button type="submit" color="primary" (click)="onCancel()" class="Update-btn">Cancel</button>
+          <!-- <button mat-raised-button type="button" class="Discard-btn" (click)="onCancel" >Cancel</button>-->   
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

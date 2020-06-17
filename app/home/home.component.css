@@ -1,0 +1,59 @@
+ agm-map{
+    height:500px;
+}
+
+ .column {
+    float: left;
+    width: 23.33%;
+    padding: 90px;
+    padding-top:100px;
+
+  }
+  .column1 {
+    float: left;
+    width:73.33%;
+    padding:5px;
+    padding-top:115px;
+  } 
+
+  
+  /* Clear floats after image containers */
+    .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }  
+  .row
+  {
+    padding-left:115px;
+  }
+
+
+.companyName{
+    font-size: 200%;
+}
+a{
+    text-decoration: none;
+    font-size: 110%;
+    white-space: normal;
+}
+button{
+    font-size: 110%;
+    min-width: min-content;
+}
+.example-icon {
+    padding: 0 14px;
+  }
+
+  .example-spacer {
+    left:0px ;
+    padding-left:179%;
+  } 
+  .mat-sidenav-content{
+      font-size: 200%;
+      text-align: center;
+  }
+
+  /* .signout{
+    padding-left:1000px;
+} */
