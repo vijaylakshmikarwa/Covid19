@@ -3,6 +3,7 @@ import{AngularFireDatabase} from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
@@ -34,7 +35,7 @@ export class ProfileComponent implements OnInit {
 obj:any;
 postDetails=[];
 comments_post=[];
-  constructor(public db:AngularFireDatabase,public router:ActivatedRoute,public afs:AngularFirestore,public route:Router) {
+  constructor(public db:AngularFireDatabase,public router:ActivatedRoute,public afs:AngularFirestore,public route:Router,private http:HttpClient) {
    }
 
   ngOnInit(): void {
@@ -96,7 +97,8 @@ comments_post=[];
                   "DetailedDescription":this.DetailedDescription,
                   "listing":this.listing,
                   "location":this.location,
-                  "comments":this.comments_post
+                  "comments":this.comments_post,
+                  "email":this.email
                 }
                 this.postDetails.push(obj);
            
@@ -150,7 +152,8 @@ comments_post=[];
                 "DetailedDescription":this.DetailedDescription,
                 "listing":this.listing,
                 "location":this.location,
-                "comments":this.comments_post
+                "comments":this.comments_post,
+                "email":this.email
               }
               this.postDetails.push(obj);
         
@@ -172,7 +175,7 @@ comments_post=[];
 
   }
   
-  post(id:String)
+  post(id:String,e:string)
   {
     var obj = {
         "id":id,
@@ -180,6 +183,15 @@ comments_post=[];
     };
     console.log(obj);
     this.db.list('Comments').push(obj);
+    const email = this.user;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.http.post('https://formspree.io/mpzylpjq',
+      {replyto: email, message:this.comment},
+      { 'headers': headers }).subscribe(
+        response => {
+          console.log(response);
+        }
+      );
   }
 
   SignOut()
